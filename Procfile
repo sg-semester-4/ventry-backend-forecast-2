@@ -1,1 +1,1 @@
-web: gunicorn ventry_backend_forecast_2.wsgi --log-file -
+web: gunicorn web.wsgi --log-file -
