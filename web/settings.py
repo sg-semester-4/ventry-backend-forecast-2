@@ -140,13 +140,11 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
-if DEBUG:
-    # Extra lookup directories for collectstatic to find assets static files
-    STATICFILES_DIRS = [
-        STATIC_PATH
-    ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Extra lookup directories for collectstatic to find assets static files
+STATICFILES_DIRS = [
+    STATIC_PATH
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
