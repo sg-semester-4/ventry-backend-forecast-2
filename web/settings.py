@@ -27,15 +27,11 @@ SECRET_KEY = 'o2p4t#$9!@&egj=k7oj)3t0_1ozq=swi+of1gj-rx^ip*om9ua'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'ventry-backend-forecast-2.herokuapp.com'
-]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 'ventry-backend-forecast-2.herokuapp.com']
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
-    'https://localhost:8000',
-)
+CORS_ORIGIN_WHITELIST = ()
 
 
 # Application definition
