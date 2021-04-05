@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/forecasts/items/', include('forecast_item.urls')),
-    # path('api/v1/forecasts/products/', include('product_forecast.urls')),
+    path('api/v1/forecasts/products/', include('forecast_product.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_PATH)

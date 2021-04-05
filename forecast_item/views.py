@@ -1,7 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import InventoryControl
 from django.db import connection
 from .tools import CursorExtras
 import numpy as np
@@ -17,11 +16,11 @@ class SalesForecast(APIView):
         try:
             cursor.execute(
                 '''
-            select i.id as id, i.name as name, pt.quantity as quantity, pt.updated_at as timestamp
+            select i.id as id, i.name as name, (pt.quantity*pi.quantity) as quantity, pt.updated_at as timestamp
             from product_transaction pt
-            inner join product p on pt.product_id=p.id
-            inner join item i on p.item_id=i.id
-            where i.id=%s
+            inner join product_item pi on pi.product_id=pt.product_id
+            inner join item i on i.id=pi.item_id
+            where pi.item_id=%s
             order by 4 asc
             ''', [item_id])
 
