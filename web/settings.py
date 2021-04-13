@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import django_heroku
 from pathlib import Path
 import os
+import environ
+
+# Set-up environment variables.
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,11 +91,11 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1takfhe4kvilp',
-        'USER': 'wfuexxxzgtvhdt',
-        'PASSWORD': '49cc609c034dcbe26dd061f8a628298d40bde3c13c9350e0632744f342d0cc7b',
-        'HOST': 'ec2-35-171-57-132.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': env('DB_POSTGRE_DATABASE'),
+        'USER': env('DB_POSTGRE_USERNAME'),
+        'PASSWORD': env('DB_POSTGRE_PASSWORD'),
+        'HOST': env('DB_POSTGRE_HOST'),
+        'PORT': env('DB_POSTGRE_PORT'),
     },
     'local': {
         'ENGINE': 'django.db.backends.sqlite3',
