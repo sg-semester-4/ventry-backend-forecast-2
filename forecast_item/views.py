@@ -43,10 +43,13 @@ class SalesForecast(APIView):
             # use the model to make a forecast
             forecast = model.predict(future)
 
-            # calculate MSE between expected and predicted values for december
+            # metrics between expected and predicted values
             y_true = sampleDataset['y'][0:len(sampleDataset)].values
             y_pred = forecast['yhat'].iloc[0:len(sampleDataset)].values
+            # 1. calculate MSE
             MSE = metrics.mean_squared_error(y_true, y_pred)
+            # 2. calculate R^2
+            R2 = metrics.r2_score(y_true, y_pred)
 
             observedDataset = sampleDataset[['ds', 'y']]
             observedDataset.columns = ['x', 'y']
@@ -61,7 +64,8 @@ class SalesForecast(APIView):
                 'data': {
                     "observed": observedDataset,
                     "forecasted": forecastedDataset,
-                    "mse": MSE
+                    "mse": MSE,
+                    "r2": R2
                 }
             }
             print("[SalesForecast] Succeed: %s" % ("OK"))
@@ -83,7 +87,7 @@ class StocksForecast(APIView):
         try:
             cursor.execute(
                 '''
-            select i.id as id, i.name as name, pt.quantity as quantity, pt.updated_at as timestamp
+            select i.id as id, i.name as name, ic.quantity as quantity, ic.updated_at as timestamp
             from inventory_control ic
             inner join item i on ic.item_id=i.id
             where i.id=%s
@@ -109,10 +113,13 @@ class StocksForecast(APIView):
             # use the model to make a forecast
             forecast = model.predict(future)
 
-            # calculate MSE between expected and predicted values for december
+            # metrics between expected and predicted values
             y_true = sampleDataset['y'][0:len(sampleDataset)].values
             y_pred = forecast['yhat'].iloc[0:len(sampleDataset)].values
+            # 1. calculate MSE
             MSE = metrics.mean_squared_error(y_true, y_pred)
+            # 2. calculate R^2
+            R2 = metrics.r2_score(y_true, y_pred)
 
             observedDataset = sampleDataset[['ds', 'y']]
             observedDataset.columns = ['x', 'y']
@@ -127,16 +134,17 @@ class StocksForecast(APIView):
                 'data': {
                     "observed": observedDataset,
                     "forecasted": forecastedDataset,
-                    "mse": MSE
+                    "mse": MSE,
+                    "r2": R2
                 }
             }
-            print("[SalesForecast] Succeed: %s" % ("OK"))
+            print("[StocksForecast] Succeed: %s" % ("OK"))
         except Exception as e:
             data = {
                 'status': 403,
                 'message': "Read item stocks forecast failed",
                 'data': None
             }
-            print("[SalesForecast] Failed: %s" % (e))
+            print("[StocksForecast] Failed: %s" % (e))
 
         return Response(data)
