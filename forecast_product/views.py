@@ -59,7 +59,7 @@ class SalesForecast(APIView):
 
             data = {
                 'status': 200,
-                'message': "Read item sales forecast succeed",
+                'message': "Read product sales forecast succeed",
                 'data': {
                     "observed": observedDataset,
                     "forecasted": forecastedDataset,
@@ -71,7 +71,7 @@ class SalesForecast(APIView):
         except Exception as e:
             data = {
                 'status': 403,
-                'message': "Read item sales forecast failed",
+                'message': "Read product sales forecast failed",
                 'data': None
             }
             print("[SalesForecast] Failed: %s" % (e))
