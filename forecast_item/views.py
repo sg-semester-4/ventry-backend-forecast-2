@@ -80,7 +80,7 @@ class SalesForecast(APIView):
         return Response(data)
 
 
-class StocksForecast(APIView):
+class ControlsForecast(APIView):
     def post(self, request, item_id):
         cursor = connection.cursor()
 
@@ -130,7 +130,7 @@ class StocksForecast(APIView):
 
             data = {
                 'status': 200,
-                'message': "Read item stocks forecast succeed",
+                'message': "Read item controls forecast succeed",
                 'data': {
                     "observed": observedDataset,
                     "forecasted": forecastedDataset,
@@ -138,13 +138,18 @@ class StocksForecast(APIView):
                     "r2": R2
                 }
             }
-            print("[StocksForecast] Succeed: %s" % ("OK"))
+            print("[ControlsForecast] Succeed: %s" % ("OK"))
         except Exception as e:
             data = {
                 'status': 403,
-                'message': "Read item stocks forecast failed",
+                'message': "Read item controls forecast failed",
                 'data': None
             }
-            print("[StocksForecast] Failed: %s" % (e))
+            print("[ControlsForecast] Failed: %s" % (e))
 
         return Response(data)
+
+
+class StocksForecast(APIView):
+    def post(self, request, item_id):
+        return Response(request)
