@@ -1,0 +1,41 @@
+================================================
+  NLOC    CCN   token  PARAM  length  location  
+------------------------------------------------
+       3      1     19      2       3 __init__@6-8@.\forecast_item\tools.py
+       7      3     44      1       7 dictfetchall@10-16@.\forecast_item\tools.py
+       5      3     48      1       5 namedtuplefetchall@18-22@.\forecast_item\tools.py
+       5      2     36      1       5 dffetchall@24-28@.\forecast_item\tools.py
+      52      2    329      3      68 post@13-80@.\forecast_item\views.py
+      51      2    329      3      67 post@84-150@.\forecast_item\views.py
+       2      1     14      3       2 post@154-155@.\forecast_item\views.py
+      51      2    330      3      67 post@13-79@.\forecast_product\views.py
+       2      1     14      3       2 post@83-84@.\forecast_product\views.py
+      11      2     45      0      12 main@7-18@.\manage.py
+17 file analyzed.
+==============================================================
+NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
+--------------------------------------------------------------
+      0       0.0     0.0        0.0         0     .\forecast_item\migrations\__init__.py
+      3       0.0     0.0        0.0         0     .\forecast_item\apps.py
+      0       0.0     0.0        0.0         0     .\forecast_item\models.py
+      1       0.0     0.0        0.0         0     .\forecast_item\tests.py
+     23       5.0     2.2       36.8         4     .\forecast_item\tools.py
+      8       0.0     0.0        0.0         0     .\forecast_item\urls.py
+    117      35.0     1.7      224.0         3     .\forecast_item\views.py
+      9       0.0     0.0        0.0         0     .\forecast_product\admin.py
+      3       0.0     0.0        0.0         0     .\forecast_product\apps.py
+      7       0.0     0.0        0.0         0     .\forecast_product\urls.py
+     64      26.5     1.5      172.0         2     .\forecast_product\views.py
+     12       0.0     0.0        0.0         0     .\web\asgi.py
+    104       0.0     0.0        0.0         0     .\web\settings.py
+     25       0.0     0.0        0.0         0     .\web\urls.py
+     12       0.0     0.0        0.0         0     .\web\wsgi.py
+     16      11.0     2.0       45.0         1     .\manage.py
+     30       0.0     0.0        0.0         0     .\test.py
+
+===============================================================================================================
+No thresholds exceeded (cyclomatic_complexity > 15 or length > 1000 or nloc > 1000000 or parameter_count > 100)
+==========================================================================================
+Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt
+------------------------------------------------------------------------------------------
+       434      18.9     1.9      120.8       10            0      0.00    0.00
